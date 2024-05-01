@@ -1,4 +1,4 @@
-# Data Analysis and Data Visualization using My-SQL and POWERBI Project
+# Data Analysis Using My - SQL and Data Visualization using POWERBI Project
 
 ## Database Design:
 <br>
@@ -14,11 +14,13 @@
 
  ## Chen's Notation:
 <br>
-<br>
 
  ![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/5b8af67f-0758-4d8d-a2db-537fa0976d42)
  
+
 <br>
+<br>
+
 
 ## Entitiy Relationship Diagram
 <br>
@@ -26,7 +28,10 @@
 
 ![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/b7e41217-081a-4102-9da3-fbb02f268513)
 
+
 <br>
+<br>
+
 
 ## Enhanced Entity Relationship diagram
 <br>
@@ -34,6 +39,39 @@
 
 ![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/06949a6d-1b46-4cf6-a558-9436d9eb3352)
 
+<br>
+<br>
+
+
+<br>
+
+| Entity1    | Entity2          | Cardinality                                     | Foreign Key Constraint                                    |
+|------------|------------------|---------------------------------------------------|-----------------------------------------------------------|
+| employee1  | basepayments     | One (Mandatory) to Many (1:n)                    | FK_basepayments - referring employee_no (INT) in employee table |
+| employee1  | additionalpayments | One to Many (1:n)                               | FK_additionalpayments - referring employee_no (INT) in employee table |
+| employee1  | adhocpayments    | One to Many (1:n)                                | FK_adhocpayments - referring employee_no (INT) in employee table |
+| employee1  | department       | One to Many (1:n)                                | FK_department - referring employee_no (INT) in employee table |
+
+<br>
+<br>
+
+## Entity and Attributes
+<br>
+
+| Entity         | Attribute       | Data Type       |
+|----------------|-----------------|-----------------|
+| basepayments   | employee_no     | INT             |
+|                | pay_year        | INT             |
+|                | regular_pay     | DECIMAL(10,2)   |
+|                | total_pay       | DECIMAL(10,2)   |
+| employee1      | employee_no     | INT             |
+|                | ethnicity       | VARCHAR(30)     |
+|                | gender          | VARCHAR(30)     |
+|                | job_status      | VARCHAR(255)    |
+|                | job_title       | VARCHAR(255)    |
+|                | employment_type | VARCHAR(30)     |
+
+<br>
 <br>
 
 ## Database Creation:
@@ -64,11 +102,35 @@
 
 <br>
 
-## Data Retrieval From database:
+## Data Analysis with SQL
+
+SQL (Structured Query Language) is essential for data analysis tasks. Here's how SQL can be used for different aspects of data analysis:
+
+### Data Retrieval
+
+SQL allows users to retrieve specific data from databases using queries. For example:
+
+**Data Filtering:**
+
+ Data can be filtered based on specific conditions using SQL's WHERE clause. 
+
+SELECT * FROM Sales WHERE Date >= '2023-01-01' AND Date < '2024-01-01';
+
+<br>
+
+**Data Joins:**
+
+SQL supports various types of joins to combine data from multiple tables.
 <br>
 
 
-**SELECT * FROM employee1 ORDER BY employee_no ASC;**
+<br>
+
+**Query:**
+
+```sql
+SELECT * FROM employee1 ORDER BY employee_no ASC;
+```
 <br>
 <br>
 
@@ -81,7 +143,9 @@
 
 **Query:**
 
-   **SELECT Count( DISTINCT employee_no) AS Total_emp_count FROM employee1;**
+```sql
+   SELECT Count( DISTINCT employee_no) AS Total_emp_count FROM employee1;
+```
 <br>
 <br>
 
@@ -94,8 +158,9 @@
 <br>
 
 **Query:**
-
-   **SELECT COUNT(DISTINCT department_no) AS total_dep FROM department;**
+```sql
+   SELECT COUNT(DISTINCT department_no) AS total_dep FROM department;
+```
 <br>
 <br>
 
@@ -109,7 +174,10 @@
 
 **Query:**
 
-   **SELECT department_no, COUNT(employee_no) AS Totalemployees FROM department GROUP BY department_no ORDER BY Totalemployees DESC;**
+```sql
+   SELECT department_no, COUNT(employee_no) AS Totalemployees FROM department GROUP BY department_no ORDER BY Totalemployees DESC;
+```
+
 <br>
 <br>
 
@@ -122,7 +190,9 @@
 
 **Query:**
 
-   **SELECT SUM(total_pay) AS total_payroll FROM basepayments WHERE pay_year='2023';**
+```sql
+   SELECT SUM(total_pay) AS total_payroll FROM basepayments WHERE pay_year='2023';
+```
 <br>
 <br>
 
@@ -135,7 +205,9 @@
 
 **Query:**
 
-   **SELECT round(AVG(b.regular_pay),2) AS Average, e.employment_type FROM employee1 e INNER JOIN basepayments b ON b.employee_no = e.employee_no GROUP BY e.employment_type;**
+```sql
+   SELECT round(AVG(b.regular_pay),2) AS Average, e.employment_type FROM employee1 e INNER JOIN basepayments b ON b.employee_no = e.employee_no GROUP BY e.employment_type;
+```
 <br>
 <br>
 
@@ -148,7 +220,9 @@
 
 **Query:**
 
-   **SELECT b.total_pay,e.job_title FROM basepayments b INNER JOIN employee1 e ON e.employee_no = b.employee_no ORDER BY b.total_pay DESC LIMIT 10;**
+```sql
+   SELECT b.total_pay,e.job_title FROM basepayments b INNER JOIN employee1 e ON e.employee_no = b.employee_no ORDER BY b.total_pay DESC LIMIT 10;
+```
 <br>
 <br> 
 
@@ -160,7 +234,9 @@
 
 **Query:**
 
-   **SELECT round(AVG(b.regular_pay),2) AS averge_regular_pay,e.gender FROM basepayments b INNER JOIN employee1 e ON e.employee_no = b.employee_no GROUP BY e.gender;**
+```sql
+   SELECT round(AVG(b.regular_pay),2) AS averge_regular_pay,e.gender FROM basepayments b INNER JOIN employee1 e ON e.employee_no = b.employee_no GROUP BY e.gender;
+```
 <br>
 <br>
 
@@ -173,7 +249,9 @@
 
 **Query:**
 
-   **SELECT d.department_no,SUM(a.overtime_pay) AS total_overtime_pay FROM department d INNER JOIN adhocpayments a ON a.employee_no = d.employee_no  GROUP BY d.department_no ORDER BY total_overtime_pay DESC;**
+```sql
+   SELECT d.department_no,SUM(a.overtime_pay) AS total_overtime_pay FROM department d INNER JOIN adhocpayments a ON a.employee_no = d.employee_no  GROUP BY d.department_no ORDER BY total_overtime_pay DESC;
+```
 <br>
 <br>  
 
@@ -186,7 +264,9 @@
 
 **Query:**
 
-   **SELECT department_no, COUNT(DISTINCT employee_no) AS Totalemployees FROM department GROUP BY department_no ORDER BY Totalemployees DESC;**
+```sql
+   SELECT department_no, COUNT(DISTINCT employee_no) AS Totalemployees FROM department GROUP BY department_no ORDER BY Totalemployees DESC;
+```
 <br>
 <br>
 
@@ -260,7 +340,7 @@
 ![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/19fa7baa-14b0-4804-8ab2-e111c8f8fd9b)
 <br>
 
-**Creating another measure to change the above measure to include the calculation and display the average value in a custom format"**
+**Creating another measure to change the above measure to include the calculation and display the average value in a custom format**
 <br>
 <br>
 
@@ -271,38 +351,39 @@
 
 ![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/76598710-e21e-4ee9-8223-dbeaa475d6b1)
 <br>
+<br>
 
 
-## Dashboard Creation:
+## Report Creation:
 
-**1. Include a title for dashboard**
+- Include a title for dashboard.
 
-**2. Insert a card displaying the total number of employees.**
+- Insert a card displaying the total number of employees.
 
-**3. Insert a card displaying the Total number of Departments**
+- Insert a card displaying the Total number of Departments.
 
-**4. Display total number of Job titles**
+- Display total number of Job titles
 
-**5. Total Pay for the year 2023**
+- Total Pay for the year 2023.
 
-**6. Average regular pay for Full time and part time employees.**
+-  Average regular pay for Full time and part time employees.
 
-**7. Average regular pay by Gender**
+- Average regular pay by Gender.
 
-**8. Head count by Department**
+- Head count by Department.
 
-**9. Total Overtime pay for each Department number excluding the null values.**
+- Total Overtime pay for each Department number excluding the null values.
 
-**10. Top 5 highest paying Job titles**
+- Top 5 highest paying Job titles.
 
-**11. Headcount by gender.**
+- Headcount by gender.
 
-**12. Headcount by Employment type.**
+- Headcount by Employment type.
 
-**13. Add some pictures and background images to the dashboard.**
+- Add some pictures and background images to the dashboard.
 
 
-**Data Filtering**
+**Data Filtering:**
 
 **Filter for displaying overtime pay for every department - excluding department with no overtime pay values.**
 <br>
@@ -320,7 +401,7 @@
 <br>
 <br>
 
-**Dashboard for Employee Payroll 2023:**
+**Report for Employee Payroll 2023:**
 
 <br>
 <br>
