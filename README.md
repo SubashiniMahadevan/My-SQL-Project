@@ -328,6 +328,19 @@ SELECT * FROM employee1 ORDER BY employee_no ASC;
 <br>
 
 ## Data Transformation:
+<br>
+
+**Removing Blank Rows - Handling Null values**
+<br>
+<br>
+
+![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/e5859704-3a12-4f21-a2e5-222a9daaac1e)
+<br>
+<br>
+
+![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/9b66bf58-01d4-46bf-8577-e313cf209364)
+<br>
+<br>
 
 **Creation of new measures for calculating average for regular pay for each employment type.**
 <br>
@@ -350,6 +363,26 @@ SELECT * FROM employee1 ORDER BY employee_no ASC;
 
 
 ![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/76598710-e21e-4ee9-8223-dbeaa475d6b1)
+<br>
+<br>
+
+**Replacing the Values for Employment type and job status in POWER QUERY Editor - replacing the employment type from 'FULL_TIME' to 'FULL TIME' and 'PART_TIME' to 'PART TIME'.**
+<br>
+<br>
+
+![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/65fc8336-cd01-4f25-8840-fde9225b87ec)
+<br>
+<br>
+
+![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/0745d9de-e451-4fd3-83a9-1397b76f38be)
+<br>
+<br>
+
+![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/709e57df-6526-49cd-b5e5-2e8535e5b2a6)
+<br>
+<br>
+
+![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/5bc88bbb-cb4d-4393-a262-267f9f67685b)
 <br>
 <br>
 
@@ -406,7 +439,9 @@ SELECT * FROM employee1 ORDER BY employee_no ASC;
 <br>
 <br>
 
-![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/1440d1aa-3053-485d-aeac-a9a83c74e8da)
+![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/521398ac-4f5f-42c4-8e40-b69a754d0549)
+
+
 
 
 
