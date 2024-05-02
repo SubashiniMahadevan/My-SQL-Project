@@ -275,6 +275,62 @@ SELECT * FROM employee1 ORDER BY employee_no ASC;
 
 <br>
 
+**10. What is retirement contributions for every department**
+<br>
+
+**Query:**
+
+```sql
+SELECT round(AVG(ap.retirement_contributions),2) AS Retirement_Contributions,d.department_title AS Department FROM additionalpayments ap INNER JOIN department d ON ap.employee_no=d.employee_no GROUP BY Department ORDER BY Retirement_Contributions DESC;
+```
+<br>
+<br>
+
+![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/d0f8a4cc-1d80-42a9-a80f-e51383296796)
+<br>
+
+**11. What is the count of employees by Gender in each department?**
+<br>
+
+**Query:**
+
+```sql
+SELECT 
+    d.department_title,
+    SUM(CASE WHEN e.gender = 'MALE' THEN 1 ELSE 0 END) AS male_count,
+    SUM(CASE WHEN e.gender = 'FEMALE' THEN 1 ELSE 0 END) AS female_count
+FROM 
+    department d
+JOIN 
+    employee1 e ON d.employee_no = e.employee_no
+GROUP BY 
+    d.department_title ORDER BY female_count DESC;
+```
+<br>
+<br>
+
+![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/554bbcee-559f-404a-ad59-847c0e667024)
+<br>
+
+
+
+
+**12. What is the Head count of employees with Employment types as Full time and part time for each Department?**
+<br>
+
+**Query:**
+
+```sql
+SELECT  COUNT(e.employee_no) AS employee_count,e.employment_type,d.department_title FROM employee1 e INNER JOIN department d ON e.employee_no = d.employee_no GROUP BY e.employment_type,d.department_title;
+```
+
+<br>
+<br>
+
+![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/22da7289-b9c5-4ffc-a3de-64d9e214cfae)
+<br>
+<br>
+
 # POWERBI - Data Visualization
 
 ## Data Import:
@@ -389,6 +445,8 @@ SELECT * FROM employee1 ORDER BY employee_no ASC;
 
 ## Report Creation:
 
+- Create a Multi paginated Report for employee payroll dataset.
+
 - Include a title for dashboard.
 
 - Insert a card displaying the total number of employees.
@@ -399,7 +457,7 @@ SELECT * FROM employee1 ORDER BY employee_no ASC;
 
 - Total Pay for the year 2023.
 
--  Average regular pay for Full time and part time employees.
+- Average regular pay for Full time and part time employees.
 
 - Average regular pay by Gender.
 
@@ -413,7 +471,21 @@ SELECT * FROM employee1 ORDER BY employee_no ASC;
 
 - Headcount by Employment type.
 
-- Add some pictures and background images to the dashboard.
+- Insert a card to display the total employees with Active and Inactive Job statuses.
+
+- Create Funnel Chart to show the Top 5 Departments preferred by Female Employees (calculate female employees counts).
+
+- Pie chart showing the overtime pay for genders and their percentage contribution on overtime pay.
+
+- Create a bar chart visualizing the Total employees for each department with Employment status - Full Time and Part time.
+
+- Create a table showing the Benefit pay for each job title excluding the null values.
+
+- Create a Funnel chart to display the Top 10 departments that contribute to the Total Retirement Contributions.
+  
+- Finally a narrative summary about the report.
+
+- Add some pictures and background images to the report.
 
 
 **Data Filtering:**
@@ -434,12 +506,75 @@ SELECT * FROM employee1 ORDER BY employee_no ASC;
 <br>
 <br>
 
+**In Summary - answers the top questions**
+
+***1.What is the Higest paying Job title?***
+<br>
+
+<p>FIREBOAT PILOT</p>
+<br>
+
+***2.Which Department has the Highest number of employees?***
+<br>
+
+<p>POLICE - It accounts to 26% of the total employeees </p>
+
+***3.Which Department has the Highest ovetime pay?***
+<br>
+
+<p>POLICE</p>
+<br>
+
+***4.Which gender population is more among the employees?***
+<br>
+
+<p>> Male employees, Contributes to 63% of the total population.</p>
+<br>
+
+***5.What is the percentage of Full time and part time employment***
+<br>
+
+<p>Full time employment contributes 84% and Part time employment contributes 34%</p>
+<br>
+
+***6. How many employees out of total employees have a job status as 'Non Active'.***
+<br>
+
+<p>Total of 8 employees have a job status as 'Not Active'.</p>
+<br>
+
+***7. Which department has the highest total benefit pay?***
+<br>
+
+<p>Police Department </p>
+<br>
+
+***8. Which department does highest Retirement Contributions?***
+<br>
+
+<p>FIRE Department</p>
+<br>
+
+
 **Report for Employee Payroll 2023:**
 
 <br>
+
+It is multi page report with Narrative summary and visualizations supporting the analysis of Employee payroll dataset.
+<br>
 <br>
 
+
 ![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/144d36b2-6932-4f10-b9b7-e8f0314d562a)
+
+<br>
+<br>
+
+![image](https://github.com/SubashiniMahadevan/My-SQL-Project/assets/168095179/3b6a20dd-73a7-4716-9d1a-c4c77820c93f)
+
+
+
+
 
 
 
